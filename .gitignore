@@ -13,3 +13,5 @@ libtool
 *.lo
 *.la
 *.o
+.cache
+compile_commands.json
