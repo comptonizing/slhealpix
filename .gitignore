@@ -8,3 +8,8 @@ config.status
 configure
 configure~
 libtool
+.deps
+.libs
+*.lo
+*.la
+*.o
