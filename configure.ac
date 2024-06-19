@@ -79,6 +79,7 @@ AC_CHECK_HEADERS([slang.h], [], [AC_MSG_ERROR([slang.h not found!])], [])
 AC_CHECK_HEADERS([fitsio.h], [], [AC_MSG_ERROR([fitsio.h not found (should be part of heasoft!)])], [])
 AC_CHECK_HEADERS([chealpix.h], [], [AC_MSG_ERROR([chealpix.h not found!])], [])
 
+AC_SEARCH_LIBS([cos], [m], [], [AC_MSG_ERROR([math library not found!])], [])
 AC_SEARCH_LIBS([SLang_restart], [slang], [], [AC_MSG_ERROR([slang library not found!])], [])
 AC_SEARCH_LIBS([ffopen], [cfitsio], [], [AC_MSG_ERROR([cfitsio library not found (should be part of heasoft)!])], [])
 AC_SEARCH_LIBS([vec2ang], [chealpix], [], [AC_MSG_ERROR([healpix library not found!])], [])
