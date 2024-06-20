@@ -1,4 +1,4 @@
-AC_INIT([slhealpix],[0.1],[philipp.ph.weber@fau.de])
+AC_INIT([slhealpix],[1.0],[philipp.ph.weber@fau.de])
 
 AC_CONFIG_AUX_DIR([build-aux])
 AM_INIT_AUTOMAKE([-Wall -Werror foreign])
