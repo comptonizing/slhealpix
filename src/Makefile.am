@@ -15,8 +15,8 @@ help_DATA=healpix.hlp
 healpix.tm: healpix.sl
 	@top_builddir@/build-aux/tm-strip $< >>$@
 
-.tm.hlp:
+healpix.hlp: healpix.tm
 	rm -f $@
 	@top_builddir@/build-aux/tmexpand -I@top_builddir@/build-aux/tmdata/ -Mslhlp_isisscripts $< $@
 
-CLEANFILES=$(help_DATA)
+CLEANFILES=$(help_DATA) healpix.tm
