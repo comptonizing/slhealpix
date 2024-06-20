@@ -670,6 +670,15 @@ static SLang_DConstant_Type DConst_Table [] =
    SLANG_END_DCONST_TABLE
 };
 
+static SLang_IConstant_Type IConst_Table [] =
+{
+   MAKE_ICONSTANT("HEALPIX_SCHEME_RING", 1),
+   MAKE_ICONSTANT("HP_RING", 1),
+   MAKE_ICONSTANT("HEALPIX_SCHEME_NEST", 2),
+   MAKE_ICONSTANT("HP_NEST", 2),
+   SLANG_END_ICONST_TABLE
+};
+
 int init_healpix_module_ns(char *ns_name) {
   SLang_NameSpace_Type *ns;
   if ( (ns = SLns_create_namespace (ns_name)) == NULL ) {
@@ -678,7 +687,8 @@ int init_healpix_module_ns(char *ns_name) {
 
   if (
       -1 == SLadd_intrin_fun_table(Intrinsics, NULL) ||
-      -1 == SLadd_dconstant_table(DConst_Table, NULL)
+      -1 == SLadd_dconstant_table(DConst_Table, NULL) ||
+      -1 == SLadd_iconstant_table(IConst_Table, NULL)
       ) {
     return -1;
   }
