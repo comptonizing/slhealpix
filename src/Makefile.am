@@ -20,3 +20,5 @@ healpix.hlp: healpix.tm
 	@top_builddir@/build-aux/tmexpand -I@top_builddir@/build-aux/tmdata/ -Mslhlp_isisscripts $< $@
 
 CLEANFILES=$(help_DATA) healpix.tm
+
+EXTRA_DIST=healpix.sl healpix.hlp
