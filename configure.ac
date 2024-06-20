@@ -33,24 +33,24 @@ AS_IF([ [[ "$slang_dir" != "notgiven" ]] ],
        ]
       )
 
-# FIND HEASOFT
-AC_ARG_WITH(heasoft,
-            [AS_HELP_STRING([--with-heasoft=<heasoft path>],[Path to the heasoft installation])],
-            heasoft_dir=$withval,
-            heasoft_dir=notgiven)
-AS_IF([ [[ "$heasoft_dir" == "yes" ]] ],
-      [AC_MSG_ERROR([you must write some directory behind --with-heasoft ...])]
+# FIND CFITSIO
+AC_ARG_WITH(cfitsio,
+            [AS_HELP_STRING([--with-cfitsio=<cfitsio path>],[Path to the cfitsio installation])],
+            cfitsio_dir=$withval,
+            cfitsio_dir=notgiven)
+AS_IF([ [[ "$cfitsio_dir" == "yes" ]] ],
+      [AC_MSG_ERROR([you must write some directory behind --with-cfitsio ...])]
       )
-AS_IF([ [[ "$heasoft_dir" != "notgiven" ]] ],
+AS_IF([ [[ "$cfitsio_dir" != "notgiven" ]] ],
       [
-	AS_IF([ [[ ! -d $heasoft_dir ]] ],
-	      [AC_MSG_ERROR([heasoft directory "$heasoft_dir" does not exist!])]
+	AS_IF([ [[ ! -d $cfitsio_dir ]] ],
+	      [AC_MSG_ERROR([cfitsio directory "$cfitsio_dir" does not exist!])]
 	      )
-	AC_MSG_NOTICE([heasoft installation is $heasoft_dir])
-	AC_SUBST([HEASOFT], [$heasoft_dir])
-	LDFLAGS="$LDFLAGS -L${heasoft_dir}/lib"
-	CFLAGS="$CFLAGS -I${heasoft_dir}/include"
-	CPPFLAGS="$CPPFLAGS -I${heasoft_dir}/include"
+	AC_MSG_NOTICE([cfitsio installation is $cfitsio_dir])
+	AC_SUBST([CFITSIO], [$cfitsio_dir])
+	LDFLAGS="$LDFLAGS -L${cfitsio_dir}/lib"
+	CFLAGS="$CFLAGS -I${cfitsio_dir}/include"
+	CPPFLAGS="$CPPFLAGS -I${cfitsio_dir}/include"
        ]
       )
 
@@ -76,12 +76,12 @@ AS_IF([ [[ "$healpix_dir" != "notgiven" ]] ],
       )
 
 AC_CHECK_HEADERS([slang.h], [], [AC_MSG_ERROR([slang.h not found!])], [])
-AC_CHECK_HEADERS([fitsio.h], [], [AC_MSG_ERROR([fitsio.h not found (should be part of heasoft!)])], [])
+AC_CHECK_HEADERS([fitsio.h], [], [AC_MSG_ERROR([fitsio.h not found!])], [])
 AC_CHECK_HEADERS([chealpix.h], [], [AC_MSG_ERROR([chealpix.h not found!])], [])
 
 AC_SEARCH_LIBS([cos], [m], [], [AC_MSG_ERROR([math library not found!])], [])
 AC_SEARCH_LIBS([SLang_restart], [slang], [], [AC_MSG_ERROR([slang library not found!])], [])
-AC_SEARCH_LIBS([ffopen], [cfitsio], [], [AC_MSG_ERROR([cfitsio library not found (should be part of heasoft)!])], [])
+AC_SEARCH_LIBS([ffopen], [cfitsio], [], [AC_MSG_ERROR([cfitsio library not found!])], [])
 AC_SEARCH_LIBS([vec2ang], [chealpix], [], [AC_MSG_ERROR([healpix library not found!])], [])
 
 
